@@ -203,12 +203,6 @@
       margin-bottom: 0;
     }
 
-    .signature {
-      margin-top: 6px;
-      font-weight: 800;
-      color: var(--accent-2);
-    }
-
     .actions {
       display: grid;
       gap: 12px;
@@ -239,13 +233,6 @@
       box-shadow: 0 14px 30px rgba(200, 63, 131, 0.28);
     }
 
-    .button.secondary {
-      background: rgba(255,255,255,0.80);
-      color: var(--accent-2);
-      border: 1px solid rgba(217, 92, 151, 0.14);
-      box-shadow: 0 8px 20px rgba(200, 63, 131, 0.06);
-    }
-
     .button:hover {
       transform: translateY(-1px);
     }
@@ -258,33 +245,6 @@
       opacity: 0.95;
       animation: fadeUp 1s ease both;
       animation-delay: 0.15s;
-    }
-
-    .petals,
-    .flowers-layer {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .petal {
-      position: fixed;
-      top: -10vh;
-      font-size: 20px;
-      pointer-events: none;
-      animation: fall linear infinite;
-    }
-
-    .flower {
-      position: absolute;
-      top: -12vh;
-      font-size: 20px;
-      opacity: 0.65;
-      filter: drop-shadow(0 8px 14px rgba(189, 65, 121, 0.12));
-      animation: blossom linear infinite;
-      user-select: none;
     }
 
     @keyframes fadeUp {
@@ -303,24 +263,6 @@
       50% { transform: translateY(-18px); }
     }
 
-    @keyframes fall {
-      0% {
-        transform: translate3d(0, -10vh, 0) rotate(0deg) scale(var(--scale));
-      }
-      100% {
-        transform: translate3d(var(--drift), 110vh, 0) rotate(320deg) scale(var(--scale));
-      }
-    }
-
-    @keyframes blossom {
-      0% {
-        transform: translate3d(0, -10vh, 0) rotate(0deg) scale(var(--scale));
-      }
-      100% {
-        transform: translate3d(var(--drift), 110vh, 0) rotate(240deg) scale(var(--scale));
-      }
-    }
-
     @media (min-width: 640px) {
       body {
         padding: 28px;
@@ -331,45 +273,10 @@
       }
     }
   </style>
-  <style>
-    .petals {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .petal {
-      position: fixed;
-      top: -40px;
-      font-size: 20px;
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-      will-change: transform;
-      animation-name: flowerFall !important;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-      filter: drop-shadow(0 4px 8px rgba(200, 63, 131, 0.16));
-      opacity: 0.9;
-    }
-
-    @keyframes flowerFall {
-      0% {
-        transform: translate3d(0, -60px, 0) rotate(0deg);
-      }
-      100% {
-        transform: translate3d(var(--drift, 0px), calc(100vh + 120px), 0) rotate(360deg);
-      }
-    }
-  </style>
 </head>
 <body>
   <div class="blur one"></div>
   <div class="blur two"></div>
-  <div class="petals" id="petals"></div>
-  <div class="flowers-layer" id="flowers"></div>
 
   <main class="wrap">
     <section class="card">
@@ -398,33 +305,13 @@
       </div>
 
       <div class="actions">
-        <a class="button primary" href="https://wa.me/5551997529716?text=Vi%20tua%20p%C3%A1gina%20e%20amei%20%F0%9F%8C%B7" target="_blank" rel="noopener noreferrer">
-          Amei 🤍
+        <a class="button primary" href="https://wa.me/5551997529716?text=Eu%20te%20amo%20seu%20lindo%20%E2%9D%A4%EF%B8%8F%20%28kkk%29" target="_blank" rel="noopener noreferrer">
+        Amei 🤍
         </a>
       </div>
     </section>
 
     <p class="footer">Feita com carinho — Willian Poerari</p>
   </main>
-
-  <script>
-  const petalsContainer = document.getElementById('petals');
-  const flowers = ['🌹', '🌷', '💖',];
-
-  petalsContainer.innerHTML = '';
-
-  for (let i = 0; i < 20; i++) {
-    const petal = document.createElement('span');
-    petal.className = 'petal';
-    petal.textContent = flowers[Math.floor(Math.random() * flowers.length)];
-    petal.style.left = Math.random() * 100 + 'vw';
-    petal.style.animationDuration = (7 + Math.random() * 7) + 's';
-    petal.style.animationDelay = (-Math.random() * 12) + 's';
-    petal.style.setProperty('--drift', (Math.random() * 120 - 60) + 'px');
-    petal.style.opacity = (0.20 + Math.random() * 0.20).toFixed(2);
-    petal.style.transform = `scale(${(0.85 + Math.random() * 0.45).toFixed(2)})`;
-    petalsContainer.appendChild(petal);
-  }
-    </script>
 </body>
 </html>
