@@ -270,15 +270,11 @@
     }
 
     .petal {
-      position: absolute;
+      position: fixed;
       top: -10vh;
-      width: 14px;
-      height: 20px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,182,211,0.9));
-      border-radius: 12px 12px 12px 2px;
-      opacity: 0.55;
+      font-size: 20px;
+      pointer-events: none;
       animation: fall linear infinite;
-      box-shadow: 0 0 10px rgba(255, 182, 211, 0.28);
     }
 
     .flower {
@@ -352,58 +348,44 @@
       </h1>
 
       <p class="subtitle">
-        Hoje é um dia para celebrar a força, a sensibilidade e a beleza que existem em ser mulher.
+        O Dia da Mulher existe porque, ao longo da história, muitas mulheres lutaram para serem ouvidas, respeitadas e valorizadas. Hoje a data virou um momento simples, mas importante: lembrar a força, a coragem e a delicadeza que existem em ser mulher.
       </p>
 
       <div class="message">
         <p>
-          Entre tantas qualidades que tornam uma mulher especial, uma das mais bonitas é a capacidade de iluminar o ambiente com a própria presença.
+          🌷 Entre tantas histórias de mulheres fortes que marcaram o mundo, existem também aquelas que marcam a vida das pessoas ao redor apenas sendo quem são.
         </p>
         <p>
-          E hoje eu quis te lembrar, de um jeito simples, que te conhecer tem sido uma dessas coisas bonitas da vida.
+          🌸 Mulheres que carregam força, sensibilidade e uma presença que deixa tudo um pouco mais bonito.
         </p>
-        <p class="signature">— Willian 💗</p>
+        <p>
+          ✨ Um Feliz dia da mulher pra mulher mais linda, forte e delicada desse mundo!
+        </p>
+        <p style="margin-top:10px;font-weight:600;">Você é incrível! ❤️</p>
       </div>
 
       <div class="actions">
         <a class="button primary" href="https://wa.me/5551997529716?text=Vi%20tua%20p%C3%A1gina%20e%20amei%20%F0%9F%8C%B7" target="_blank" rel="noopener noreferrer">
-          Responder no WhatsApp
+          Amei 🤍
         </a>
       </div>
     </section>
 
-    <p class="footer">Feito com carinho.</p>
+    <p class="footer">Feita com carinho — Willian Poerari</p>
   </main>
 
   <script>
     const petalsContainer = document.getElementById('petals');
-    const flowersContainer = document.getElementById('flowers');
+    const flowers = ['🌸','🌸','🌷','🌷','🌸','🌷'];
 
     for (let i = 0; i < 18; i++) {
       const petal = document.createElement('span');
       petal.className = 'petal';
-      petal.style.left = Math.random() * 100 + 'vw';
-      petal.style.animationDuration = (7 + Math.random() * 7) + 's';
-      petal.style.animationDelay = (-Math.random() * 12) + 's';
-      petal.style.setProperty('--drift', (Math.random() * 180 - 90) + 'px');
-      petal.style.setProperty('--scale', (0.7 + Math.random() * 0.8).toFixed(2));
-      petal.style.opacity = (0.25 + Math.random() * 0.45).toFixed(2);
+      petal.textContent = flowers[Math.floor(Math.random()*flowers.length)];
+      petal.style.left = Math.random()*100 + 'vw';
+      petal.style.animationDuration = (6 + Math.random()*6) + 's';
+      petal.style.animationDelay = (-Math.random()*10) + 's';
       petalsContainer.appendChild(petal);
-    }
-
-    const flowers = ['🌸', '🌷', '💮', '🌺'];
-
-    for (let i = 0; i < 10; i++) {
-      const flower = document.createElement('span');
-      flower.className = 'flower';
-      flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
-      flower.style.left = Math.random() * 100 + 'vw';
-      flower.style.animationDuration = (10 + Math.random() * 8) + 's';
-      flower.style.animationDelay = (-Math.random() * 14) + 's';
-      flower.style.setProperty('--drift', (Math.random() * 220 - 110) + 'px');
-      flower.style.setProperty('--scale', (0.8 + Math.random() * 0.9).toFixed(2));
-      flower.style.opacity = (0.28 + Math.random() * 0.45).toFixed(2);
-      flowersContainer.appendChild(flower);
     }
   </script>
 </body>
