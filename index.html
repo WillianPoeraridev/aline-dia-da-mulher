@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz Dia da Mulher, Aline</title>
+  <meta name="description" content="Uma página especial para o Dia da Mulher." />
+  <style>
+    :root {
+      --bg-1: #fff6fb;
+      --bg-2: #ffe9f5;
+      --card: rgba(255, 255, 255, 0.68);
+      --text: #4a2140;
+      --muted: #7b506d;
+      --accent: #d95c97;
+      --accent-2: #b73e78;
+      --shadow: 0 20px 50px rgba(133, 47, 92, 0.18);
+      --border: rgba(255, 255, 255, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 35%),
+        radial-gradient(circle at bottom right, rgba(255,182,211,0.45) 0%, rgba(255,182,211,0) 35%),
+        linear-gradient(160deg, var(--bg-1), var(--bg-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      padding: 20px;
+      position: relative;
+    }
+
+    .blur {
+      position: fixed;
+      inset: auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      filter: blur(70px);
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .blur.one {
+      top: 5%;
+      left: -30px;
+      background: rgba(255, 162, 196, 0.55);
+    }
+
+    .blur.two {
+      right: -40px;
+      bottom: 10%;
+      background: rgba(255, 214, 230, 0.85);
+      animation-delay: -3s;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 460px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 28px 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -30px;
+      width: 130px;
+      height: 130px;
+      background: radial-gradient(circle, rgba(255,255,255,0.85), rgba(255,255,255,0));
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(217, 92, 151, 0.12);
+      color: var(--accent-2);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+    }
+
+    .title {
+      font-size: clamp(2rem, 7vw, 2.8rem);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .title span {
+      display: block;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .message {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(217, 92, 151, 0.08);
+      margin-bottom: 20px;
+    }
+
+    .message p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .message p:last-child {
+      margin-bottom: 0;
+    }
+
+    .signature {
+      margin-top: 4px;
+      font-weight: 700;
+      color: var(--accent-2);
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .button {
+      appearance: none;
+      border: none;
+      text-decoration: none;
+      text-align: center;
+      width: 100%;
+      padding: 15px 18px;
+      border-radius: 16px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      cursor: pointer;
+    }
+
+    .button:active {
+      transform: scale(0.985);
+    }
+
+    .button.primary {
+      color: white;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 12px 28px rgba(183, 62, 120, 0.28);
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,0.75);
+      color: var(--accent-2);
+      border: 1px solid rgba(217, 92, 151, 0.12);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 0.84rem;
+      color: var(--muted);
+      opacity: 0.95;
+      animation: fadeUp 1s ease both;
+      animation-delay: 0.15s;
+    }
+
+    .petals {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .petal {
+      position: absolute;
+      top: -10vh;
+      width: 14px;
+      height: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,182,211,0.9));
+      border-radius: 12px 12px 12px 2px;
+      opacity: 0.55;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-18px); }
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translate3d(0, -10vh, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate3d(var(--drift), 110vh, 0) rotate(320deg);
+      }
+    }
+
+    @media (min-width: 640px) {
+      body {
+        padding: 28px;
+      }
+
+      .card {
+        padding: 34px 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="blur one"></div>
+  <div class="blur two"></div>
+  <div class="petals" id="petals"></div>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="badge">🌷 08 de março • Dia da Mulher</div>
+
+      <h1 class="title">
+        <span>Feliz Dia da Mulher,</span>
+        <span>Aline.</span>
+      </h1>
+
+      <p class="subtitle">
+        Hoje é um dia para celebrar a força, a sensibilidade e a beleza que existem em ser mulher.
+      </p>
+
+      <div class="message">
+        <p>
+          Entre tantas qualidades que tornam uma mulher especial, uma das mais bonitas é a capacidade de iluminar o ambiente com a própria presença.
+        </p>
+        <p>
+          E hoje eu quis te lembrar, de um jeito simples, que te conhecer tem sido uma dessas coisas bonitas da vida.
+        </p>
+        <p class="signature">— Willian 💗</p>
+      </div>
+
+      <div class="actions">
+        <a class="button primary" href="https://wa.me/5551997529716?text=Vi%20tua%20p%C3%A1gina%20e%20amei%20%F0%9F%8C%B7" target="_blank" rel="noopener noreferrer">
+          Responder no WhatsApp
+        </a>
+        <button class="button secondary" id="musicBtn" type="button">
+          Toque final ✨
+        </button>
+      </div>
+    </section>
+
+    <p class="footer">Feito com carinho, pensado para abrir bonito no celular.</p>
+  </main>
+
+  <script>
+    const petalsContainer = document.getElementById('petals');
+
+    for (let i = 0; i < 14; i++) {
+      const petal = document.createElement('span');
+      petal.className = 'petal';
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = (8 + Math.random() * 8) + 's';
+      petal.style.animationDelay = (-Math.random() * 10) + 's';
+      petal.style.setProperty('--drift', (Math.random() * 160 - 80) + 'px');
+      petal.style.opacity = (0.25 + Math.random() * 0.4).toFixed(2);
+      petal.style.transform = `scale(${(0.7 + Math.random() * 0.7).toFixed(2)})`;
+      petalsContainer.appendChild(petal);
+    }
+
+    const musicBtn = document.getElementById('musicBtn');
+    let clicked = false;
+
+    musicBtn.addEventListener('click', () => {
+      if (!clicked) {
+        musicBtn.textContent = 'Agora é só me mandar o link 💖';
+        clicked = true;
+      } else {
+        musicBtn.textContent = 'Toque final ✨';
+        clicked = false;
+      }
+    });
+  </script>
+</body>
+</html>
