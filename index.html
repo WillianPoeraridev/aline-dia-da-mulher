@@ -331,6 +331,39 @@
       }
     }
   </style>
+  <style>
+    .petals {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .petal {
+      position: fixed;
+      top: -40px;
+      font-size: 20px;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      will-change: transform;
+      animation-name: flowerFall !important;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      filter: drop-shadow(0 4px 8px rgba(200, 63, 131, 0.16));
+      opacity: 0.9;
+    }
+
+    @keyframes flowerFall {
+      0% {
+        transform: translate3d(0, -60px, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate3d(var(--drift, 0px), calc(100vh + 120px), 0) rotate(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="blur one"></div>
@@ -376,15 +409,20 @@
 
   <script>
     const petalsContainer = document.getElementById('petals');
-    const flowers = ['🌸','🌸','🌷','🌷','🌸','🌷'];
+    const flowers = ['💖', '🌷', '🌹', '🌷', '🌹',];
 
-    for (let i = 0; i < 18; i++) {
+    petalsContainer.innerHTML = '';
+
+    for (let i = 0; i < 20; i++) {
       const petal = document.createElement('span');
       petal.className = 'petal';
-      petal.textContent = flowers[Math.floor(Math.random()*flowers.length)];
-      petal.style.left = Math.random()*100 + 'vw';
-      petal.style.animationDuration = (6 + Math.random()*6) + 's';
-      petal.style.animationDelay = (-Math.random()*10) + 's';
+      petal.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = (7 + Math.random() * 7) + 's';
+      petal.style.animationDelay = (-Math.random() * 12) + 's';
+      petal.style.setProperty('--drift', (Math.random() * 120 - 60) + 'px');
+      petal.style.opacity = (0.55 + Math.random() * 0.35).toFixed(2);
+      petal.style.transform = `scale(${(0.85 + Math.random() * 0.45).toFixed(2)})`;
       petalsContainer.appendChild(petal);
     }
   </script>
